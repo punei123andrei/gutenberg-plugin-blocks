@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
   "apiVersion": 2,
-  "name": "udemy-plus/popular-recipes",
-  "title": "Form results",
+  "name": "wp-riders/job-form",
+  "title": "Job form",
   "category": "text",
   "description": "Adds a sorting form + database query for the job-title post + an application form ",
   "textdomain": "wp-riders",

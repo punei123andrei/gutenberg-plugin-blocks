@@ -1,6 +1,6 @@
 <?php 
 
-function wr_table_view($atts){
+function wr_job_form($atts){
     $font_size = esc_attr($atts['fontSize']);
     $bd_color = esc_attr($atts['borderBottomColor']);
     $style_attr = "font-size:{$font_size};border-bottom: 1px solid {$bd_color}; width: 50%;";

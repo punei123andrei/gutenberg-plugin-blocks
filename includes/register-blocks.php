@@ -2,10 +2,10 @@
 
 function wr_register_blocks() {
   $blocks = [
-    [ 'name' => 'popular-recipes', 'options' => [
-      'render_callback' => 'wr_table_view'
-    ]]
-  ];
+    [ 'name' => 'job-form', 'options' => [
+      'render_callback' => 'wr_job_form'
+      ]]
+    ];
 
   foreach($blocks as $block) {
     register_block_type(

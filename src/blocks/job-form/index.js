@@ -10,7 +10,7 @@ import { useSelect } from "@wordpress/data";
 import icons from "../../icons.js";
 import "./main.css";
 
-registerBlockType("udemy-plus/popular-recipes", {
+registerBlockType("wp-riders/job-form", {
   icon: {
     src: icons.primary,
   },
