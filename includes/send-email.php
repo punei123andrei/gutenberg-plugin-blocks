@@ -34,8 +34,6 @@ function wr_send_email(){
     } else {
         wp_send_json('Failed to send email.');
     }
-
-  
     echo json_encode($entry_date);
 
     wp_die();

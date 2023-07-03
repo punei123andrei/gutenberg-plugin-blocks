@@ -14,20 +14,23 @@ registerBlockType("wp-riders/job-form", {
   icon: {
     src: icons.primary,
   },
-  edit({ attributes, setAttributes }) {
+  edit ({ attributes, setAttributes }) {
     const { fontSize, borderBottomColor } = attributes;
     const blockProps = useBlockProps();
+
     const posts = useSelect((select) => {
       return select("core").getEntityRecords("postType", "wr-job-title", {
         per_page: 5,
         _embed: true,
       });
     });
+
     const mergedSkills = [];
     posts?.forEach((post) => {
     const skills = JSON.parse(post.meta.skills[0]);
     mergedSkills.push(...skills);
     });
+
     const fontSizes = [
       {
           name: __( 'Small', 'wp-riders' ),
@@ -45,6 +48,7 @@ registerBlockType("wp-riders/job-form", {
           size: 26,
       },
   ];
+  
     const tableStyles = useBlockProps.save({
       style: {
         'font-size': fontSize,
