@@ -14,7 +14,7 @@ registerBlockType("wp-riders/job-form", {
   icon: {
     src: icons.primary,
   },
-  edit({ attributes, setAttributes }) {
+  edit ({ attributes, setAttributes }) {
     const { fontSize, borderBottomColor } = attributes;
     const blockProps = useBlockProps();
 
