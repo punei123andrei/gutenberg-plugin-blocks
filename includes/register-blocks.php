@@ -4,7 +4,9 @@ function wr_register_blocks() {
   $blocks = [
     [ 'name' => 'job-form', 'options' => [
       'render_callback' => 'wr_job_form'
-      ]]
+      ]],
+      [ 'name' => 'team-members-group' ],
+      [ 'name' => 'team-member' ]
     ];
 
   foreach($blocks as $block) {
