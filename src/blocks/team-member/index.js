@@ -1,11 +1,12 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { 
-  useBlockProps, InspectorControls, RichText
+  useBlockProps, InspectorControls, RichText, MediaPlaceholder
 } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { 
   PanelBody, TextareaControl
 } from '@wordpress/components';
+import { isBlobURL } from '@wordpress/blob';
 import icons from '../../icons.js';
 import './main.css';
 
@@ -36,7 +37,30 @@ registerBlockType('udemy-plus/team-member', {
         </InspectorControls>
         <div {...blockProps}>
           <div className="author-meta">
-            <img /> 
+          { imgURL && <img src={imgURL}  alt={imgAlt}/> }
+            
+            <MediaPlaceholder 
+                allowedTypes={['image']}
+                accept={'image/*'}
+                icon="admin-users"
+                onSelect={img => {
+                 setAttributes({
+                  imgID: img.id,
+                  imgAlt: img.alt,
+                  imgURL: img.url
+                })
+                console.log(img.media_details)
+                }}
+                onError={error => console.error(error)}
+                disableMediaButtons={imgURL}
+                onSelectURL={ url => {
+                  setAttributes({
+                    imageID: null,
+                    imgAlt: null,
+                    imgURL: url
+                  })
+                }}
+            />
             <p>
               <RichText 
                 placeholder={__('Name', 'udemy-plus')}

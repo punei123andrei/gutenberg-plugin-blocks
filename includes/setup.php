@@ -58,3 +58,15 @@ function wr_create_job_title_post_type(){
        
 }
 
+
+// To be removed
+function wr_setup_theme(){
+    add_image_size('teamMember', 56, 56, true);
+}
+
+function up_custom_image_sizes($sizes){
+    return array_merge($sizes, [
+        'teamMember' => __('Team Member', 'udemy-plus')
+    ]);
+}
+

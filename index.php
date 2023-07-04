@@ -45,3 +45,8 @@ add_filter('add_meta_boxes', 'hide_meta_boxes');
 // Ajax actions
 add_action('wp_ajax_wr_send_email', 'wr_send_email');
 add_action('wp_ajax_nopriv_wr_send_email', 'wr_send_email');
+
+
+// Team member functionality
+// add_action('after_setup_theme', 'wr_setup_theme');
+// add_filter('image_size_names_choose', 'up_custom_image_sizes');
