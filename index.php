@@ -31,7 +31,6 @@ foreach($allFiles as $filename){
 };
 
 // Actions
-
 add_action('init', 'wr_register_blocks', 20);
 add_action( 'add_meta_boxes', 'wr_add_custom_box' );
 add_action('admin_enqueue_scripts', 'wr_job_titles_admin_scripts');
@@ -45,4 +44,4 @@ add_filter('add_meta_boxes', 'hide_meta_boxes');
 
 // Ajax actions
 add_action('wp_ajax_wr_send_email', 'wr_send_email');
-add_action('wp_ajax_nopriv_wr_send_email', 'wr_send_email');
+add_action('wp_ajax_nopriv_wr_send_email', 'wr_insert_post');

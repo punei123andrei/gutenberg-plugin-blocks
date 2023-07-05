@@ -39,7 +39,6 @@ registerBlockType("wp-riders/job-table", {
                 size: 26,
             },
         ];
-        
           const tableStyles = useBlockProps.save({
             style: {
               'font-size': fontSize,
@@ -47,7 +46,6 @@ registerBlockType("wp-riders/job-table", {
               'width': '50%'
             }
           });
-
           return (
             <>
             <InspectorControls>
