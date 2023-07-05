@@ -27,16 +27,17 @@ registerBlockType("wp-riders/job-application", {
                             ['wp-riders/job-table'],
                             ['wp-riders/wr-application-form']
                         ]}
+                        templateLock="insert"
                     />
                 </div>
             </>
         );
     },
-    save({attributes}) {
-        const blockProps = useBlockProps();
+    save () {
+        const blockProps = useBlockProps.save();
         return (
             <div {...blockProps}>
-            <InnerBlocks.Content />
+                <InnerBlocks.Content />
             </div>
         );
     }
