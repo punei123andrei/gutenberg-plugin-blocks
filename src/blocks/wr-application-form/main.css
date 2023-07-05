@@ -1,4 +1,4 @@
-  .container-flex {
+.container-flex {
     max-width: 800px;
     display: flex;
     justify-content: space-between;

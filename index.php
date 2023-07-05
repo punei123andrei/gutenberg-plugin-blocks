@@ -19,6 +19,7 @@
 define('WR_PLUGIN_DIR', plugin_dir_path(__FILE__));
 add_action('init', 'wr_create_job_title_post_type', 5);
 register_activation_hook(__FILE__, 'wr_add_job_titles', 10);
+register_deactivation_hook(__FILE__, 'wr_delete_job_titles', 10);
 
 // Includes
 $rootFiles = glob(WR_PLUGIN_DIR . 'includes/*.php');

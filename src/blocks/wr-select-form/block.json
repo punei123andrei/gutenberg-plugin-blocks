@@ -1,0 +1,12 @@
+{
+    "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+    "apiVersion": 2,
+    "name": "wp-riders/wr-select",
+    "title": "Select entries",
+    "category": "text",
+    "description": "Adds a sorting form",
+    "textdomain": "wp-riders",
+    "editorScript": "file:./index.js",
+    "style": "file:./index.css"
+  }
+  

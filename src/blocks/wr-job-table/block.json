@@ -1,10 +1,10 @@
 {
     "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
     "apiVersion": 2,
-    "name": "wp-riders/job-form",
-    "title": "Job form",
+    "name": "wp-riders/job-table",
+    "title": "Job table",
     "category": "text",
-    "description": "Adds a sorting form + database query for the job-title post + an application form ",
+    "description": "Database query for the job-title post",
     "textdomain": "wp-riders",
     "attributes": {
       "backgroundColor": {

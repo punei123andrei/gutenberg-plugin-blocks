@@ -2,8 +2,15 @@
 
 function wr_register_blocks() {
   $blocks = [
-    [ 'name' => 'job-form', 'options' => [
-      'render_callback' => 'wr_job_form'
+      [ 'name' => 'job-application' ],
+      [ 'name' => 'wr-select-form', 'options' => [
+        'render_callback' => 'wr_select_form'
+      ]],
+      [ 'name' => 'wr-job-table', 'options' => [
+        'render_callback' => 'wr_job_table'
+      ]],
+      [ 'name' => 'wr-application-form', 'options' => [
+        'render_callback' => 'wr_application_form'
       ]]
     ];
 
