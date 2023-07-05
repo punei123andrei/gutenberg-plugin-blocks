@@ -1,8 +1,7 @@
 import { registerBlockType } from "@wordpress/blocks";
 import {
   useBlockProps,
-  InspectorControls,
-  RichText,
+  InspectorControls
 } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 import { PanelBody, QueryControls, ColorPalette, FontSizePicker } from "@wordpress/components";
