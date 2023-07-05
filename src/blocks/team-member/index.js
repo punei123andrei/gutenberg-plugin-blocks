@@ -7,6 +7,7 @@ import {
   PanelBody, TextareaControl
 } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
+import { useState } from '@wordpress/element';
 import icons from '../../icons.js';
 import './main.css';
 
@@ -19,6 +20,8 @@ registerBlockType('udemy-plus/team-member', {
       name, title, bio, imgID, imgAlt, imgURL, socialHandles
     } = attributes;
     const blockProps = useBlockProps();
+
+    const [ imgPreview, seImgPreview ] = useState(imgURL);
 
     return (
       <>
@@ -44,12 +47,23 @@ registerBlockType('udemy-plus/team-member', {
                 accept={'image/*'}
                 icon="admin-users"
                 onSelect={img => {
+
+                  let newImgURL = null
+
+                  if(isBlobURL(img.url)){
+                    newImgURL = img.url
+                  } else {
+                    newImgURL = img.sizes ?
+                    img.sizes.teamMember.url :
+                    img.media_details.sizes.teamMember.source_url
+                  }
+
+                  
                  setAttributes({
                   imgID: img.id,
                   imgAlt: img.alt,
                   imgURL: img.url
                 })
-                console.log(img.media_details)
                 }}
                 onError={error => console.error(error)}
                 disableMediaButtons={imgURL}

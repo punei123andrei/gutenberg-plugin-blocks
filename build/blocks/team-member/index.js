@@ -274,6 +274,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('udemy-plus/team-member', {
   icon: {
     src: _icons_js__WEBPACK_IMPORTED_MODULE_6__["default"].primary
@@ -293,6 +294,7 @@ __webpack_require__.r(__webpack_exports__);
       socialHandles
     } = attributes;
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
+    const [imgPreview, seImgPreview] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(imgURL);
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Settings', 'udemy-plus')
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
@@ -312,12 +314,17 @@ __webpack_require__.r(__webpack_exports__);
       accept: 'image/*',
       icon: "admin-users",
       onSelect: img => {
+        let newImgURL = null;
+        if ((0,_wordpress_blob__WEBPACK_IMPORTED_MODULE_5__.isBlobURL)(img.url)) {
+          newImgURL = img.url;
+        } else {
+          newImgURL = img.sizes ? img.sizes.teamMember.url : img.media_details.sizes.teamMember.source_url;
+        }
         setAttributes({
           imgID: img.id,
           imgAlt: img.alt,
           imgURL: img.url
         });
-        console.log(img.media_details);
       },
       onError: error => console.error(error),
       disableMediaButtons: imgURL,
