@@ -14,7 +14,7 @@ registerBlockType("wp-riders/job-table", {
         src: icons.primary
     },
     edit ({ attributes, setAttributes }) {
-        const { fontSize, borderBottomColor } = attributes;
+        const { fontSize, bgEvenRow, textColor } = attributes;
         const blockProps = useBlockProps();
         const posts = useSelect((select) => {
             return select("core").getEntityRecords("postType", "wr-job-title", {
@@ -39,11 +39,12 @@ registerBlockType("wp-riders/job-table", {
                 size: 26,
             },
         ];
-          const tableStyles = useBlockProps.save({
+          const rowStyle = useBlockProps.save({
+            className: 'rider-row',
             style: {
               'font-size': fontSize,
-              'border-bottom': `1px solid ${borderBottomColor}`,
-              'width': '50%'
+              'background-color': bgEvenRow,
+              'color': textColor
             }
           });
           return (
@@ -59,26 +60,41 @@ registerBlockType("wp-riders/job-table", {
                 <PanelBody title={__('Border Color', 'wp-riders')}>
                 <ColorPalette
                   colors={[
-                    { name: 'red', color: '#f87171' },
-                    { name: 'indigo', color: '#818cf8'}
+                    { name: 'rider-blue', color: '#0099ff' },
+                    { name: 'plain', color: '#f9f9f9'}
                   ]}
-                  value={borderBottomColor}
-                  onChange={newVal => setAttributes({ borderBottomColor: newVal })}
+                  value={bgEvenRow}
+                  onChange={newVal => setAttributes({ bgEvenRow: newVal })}
+                      />
+                </PanelBody>
+                <PanelBody title={__('Text Color', 'wp-riders')}>
+                <ColorPalette
+                  colors={[
+                    { name: 'white', color: '#000' },
+                    { name: 'black', color: '#fff'}
+                  ]}
+                  value={textColor}
+                  onChange={newVal => setAttributes({ textColor: newVal })}
                       />
                 </PanelBody>
             </InspectorControls>
             <div {...blockProps}>
                 <div className="tableBlock">
-                {posts?.map((post) => {
-                  const postTitle = post.title.rendered;
-                  const skills = JSON.parse(post.meta.skills[0]);
-                  return (
-                    <div className="container-flex x-auto" data-sort="ceva">
-                        <p {...tableStyles}>{postTitle}</p>
-                        <p {...tableStyles}>{skills.join(", ")}</p>
-                    </div>
-                  );
-                })}
+                <table className="wr-table-sort">
+                  {posts?.map((post, index) => {
+                    const postTitle = post.title.rendered;
+                    const skills = JSON.parse(post.meta.skills[0]);
+                    const isEven = index % 2 === 0;
+                    return (
+                      <tr data-sort="ceva" {...(isEven && rowStyle)}>
+                        <td className="post-title"><p>{postTitle}</p></td>
+                        <td className="first-name"><p>{__("First Name", "wp_riders")}</p></td>
+                        <td className="last-name"><p>{__("Last Name", "wp-riders")}</p></td>
+                        <td className="skills"><p>{skills.join(", ")}</p></td>
+                      </tr>
+                    );
+                  })}
+                </table>
                 </div>
             </div>
             </>
