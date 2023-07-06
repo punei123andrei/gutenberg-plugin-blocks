@@ -386,11 +386,12 @@ __webpack_require__.r(__webpack_exports__);
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("table", {
       className: "wr-table-sort"
     }, posts?.map((post, index) => {
-      const postTitle = post.title.rendered;
-      const skills = JSON.parse(post.meta.skills[0]);
+      let postTitle = post.title.rendered;
+      let arraySkills = JSON.parse(post.meta.skills[0]);
+      let skills = arraySkills.map(skill => skill.replace(' ', '-'));
       const isEven = index % 2 === 0;
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("tr", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-        "data-sort": "ceva"
+        "data-sort": skills.join(" ")
       }, isEven && rowStyle), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("td", {
         className: "post-title"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, postTitle)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("td", {

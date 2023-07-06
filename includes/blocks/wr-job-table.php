@@ -4,8 +4,6 @@ function wr_job_table($atts) {
     $font_size = esc_attr($atts['fontSize']);
     $text_color = esc_attr($atts['textColor']);
     $bg_even_row = esc_attr($atts['bgEvenRow']);
-
-   
     $style_attr = "font-size:{$font_size}px;background:{$bg_even_row};color:{$text_color};";
     $wr_query_args = [
       'post_type' => 'wr-job-title',
@@ -23,10 +21,11 @@ function wr_job_table($atts) {
                 $wr_query->the_post();
                 $wr_skills = get_post_meta(get_the_ID(), 'skills', true);
                 $array_skills = json_decode($wr_skills);
+                
                 $list_skills = implode(' ', $array_skills);
                 $is_even = $counter % 2 === 0;
                 ?>
-                <tr data-sort="<?php echo esc_attr($list_skills); ?>" style="<?php echo $is_even ? $style_attr : ''; ?>">
+                <tr class="rider-row" data-sort="<?php echo esc_attr($list_skills); ?>" style="<?php echo $is_even ? $style_attr : ''; ?>">
                   <td class="post-title"><p><?php echo get_the_title(); ?></p></td>
                   <td class="first-name"><p><?php _e("First Name", "wp_riders"); ?></p></td>
                   <td class="last-name"><p><?php _e("Last Name", "wp-riders"); ?></p></td>

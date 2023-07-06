@@ -4,7 +4,7 @@ $(document).ready(function() {
     $('#sortTable').change(function() {
         var selectedSkill = $(this).val();
         
-        $('.tableBlock .container-flex').each(function() {
+        $('.tableBlock .rider-row').each(function() {
           var dataSort = $(this).data('sort');
           var skillsArray = dataSort.split(' ');
     

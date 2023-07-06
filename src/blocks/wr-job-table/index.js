@@ -82,11 +82,13 @@ registerBlockType("wp-riders/job-table", {
                 <div className="tableBlock">
                 <table className="wr-table-sort">
                   {posts?.map((post, index) => {
-                    const postTitle = post.title.rendered;
-                    const skills = JSON.parse(post.meta.skills[0]);
+                    let postTitle = post.title.rendered;
+                    let arraySkills = JSON.parse(post.meta.skills[0]);
+                    let  skills = arraySkills.map(skill => skill.replace(' ', '-'));
+                    
                     const isEven = index % 2 === 0;
                     return (
-                      <tr data-sort="ceva" {...(isEven && rowStyle)}>
+                      <tr data-sort={skills.join(" ")} {...(isEven && rowStyle)}>
                         <td className="post-title"><p>{postTitle}</p></td>
                         <td className="first-name"><p>{__("First Name", "wp_riders")}</p></td>
                         <td className="last-name"><p>{__("Last Name", "wp-riders")}</p></td>
