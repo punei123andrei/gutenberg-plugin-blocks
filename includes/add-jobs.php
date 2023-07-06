@@ -1,35 +1,40 @@
 <?php
 function wr_add_job_titles(){
     $wr_entries = [
-        'Andrei Punei'  => [
-            'Junior Tester' => ['details', 'browser-stack']
+        'Junior Tester' => [
+            'Andrei Punei' => ['details', 'browser-stack']
         ],
-        'Mircea Radu'   => [
-            'Senior Designer' => ['photoshop', 'ilustrator']
+        'Senior Designer'   => [
+            'Mircea Radu' => ['photoshop', 'ilustrator']
         ],
-        'Florin Panciu' => [
-            'Business Line Manager' => ['comunication', 'service delivery', 'development']
+        'Business Line Manager' => [
+            'Florin Panciu' => ['comunication', 'service delivery', 'development']
         ],
-        'Popescu Vlad'  => [
-            'SEO Specialist' => ['ppt campaigns', 'comunication']
+        'SEO Specialist' => [
+             'Popescu Vlad' => ['ppt campaigns', 'comunication']
         ],
-        'Simona Vlahuta'=> [
-            'Director' => ['basic', 'management skills', 'PR']
+        'Director' => [
+            'Simona Vlahuta' => ['basic', 'management skills', 'PR']
         ]
     ];
-    
-    foreach($job_titles as $job_title => $skills){
+    foreach($wr_entries as $job_title => $candidates){
         $new_post = array(
             'post_type'     => 'wr-job-title',
             'post_title'    => __($job_title, 'wp-riders'),
             'post_status'   => 'publish'
           );
-          
-          $resulted_skills = array_map(function ($item) {
-            return str_replace(' ', '-', $item);
-          }, $skills);
+          $post_id = wp_insert_post($new_post);
+          foreach($candidates as $candidate => $skills){
+            $resulted_skills = array_map(function ($item) {
+                return str_replace(' ', '-', $item);
+              }, $skills);
+            // Tags to be configured at the end
+            //   array_map(function($skill){
+            //     wp_set_post_tags($post_id, 'jumir', true);
+            //   }, $resulted_skills);
 
-      $post_id = wp_insert_post($new_post);
-      update_post_meta($post_id, 'skills', json_encode($resulted_skills));
+              update_post_meta($post_id, 'candidate', $candidate);
+              update_post_meta($post_id, 'skills', json_encode($resulted_skills));
+          }
     }
 }

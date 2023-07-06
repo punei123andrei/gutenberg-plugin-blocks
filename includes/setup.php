@@ -49,18 +49,18 @@ function wr_create_job_title_post_type(){
  
     register_post_type( 'wr-job-title', $args );
 
-    register_taxonomy('position', 'wr-job-title', [
-        'label' => __('Position', 'wp-riders'),
-        'rewrite' => ['slug' => 'position'],
-        'show_in_rest' => true
-      ]);
-
     register_post_meta('wr-job-title', 'skills', [
         'type' => 'string',
         'description' => 'A json based array to be updated',
         'default' => 'benauf',
         'show_in_rest' => true
       ]);
+
+      register_post_meta('wr-job-title', 'candidate', [
+        'type' => 'string',
+        'description' => 'The name of the candidate',
+        'default' => 'benauf',
+        'show_in_rest' => true
+      ]);
        
 }
-

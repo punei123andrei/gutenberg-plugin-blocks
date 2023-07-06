@@ -386,19 +386,21 @@ __webpack_require__.r(__webpack_exports__);
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("table", {
       className: "wr-table-sort"
     }, posts?.map((post, index) => {
-      let postTitle = post.title.rendered;
-      let arraySkills = JSON.parse(post.meta.skills[0]);
-      let skills = arraySkills.map(skill => skill.replace(' ', '-'));
+      const postTitle = post.title.rendered;
+      const arraySkills = JSON.parse(post.meta.skills[0]);
+      const candidateName = post.meta.candidate[0];
+      const [firstName, lastName] = candidateName.split(" ");
+      const skills = arraySkills.map(skill => skill.replace(' ', '-'));
       const isEven = index % 2 === 0;
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("tr", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-        "data-sort": skills.join(" ")
+        "data-sort": skills.join(", ")
       }, isEven && rowStyle), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("td", {
         className: "post-title"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, postTitle)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("td", {
         className: "first-name"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("First Name", "wp_riders"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("td", {
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, firstName)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("td", {
         className: "last-name"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Last Name", "wp-riders"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("td", {
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, lastName)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("td", {
         className: "skills"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, skills.join(", "))));
     })))));
