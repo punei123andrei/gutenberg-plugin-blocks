@@ -49,18 +49,22 @@ function wr_create_job_title_post_type(){
  
     register_post_type( 'wr-job-title', $args );
 
-    register_post_meta('wr-job-title', 'skills', [
-        'type' => 'string',
-        'description' => 'A json based array to be updated',
-        'default' => 'benauf',
-        'show_in_rest' => true
-      ]);
+    $entry_metas = [
+        'skills'    => 'A json based array to be updated',
+        'candidate' => 'The name of the candidate',
+        'wr_date'   => 'The entry date of the application'
+    ];
 
-      register_post_meta('wr-job-title', 'candidate', [
+    foreach($entry_metas as $meta_key => $description){
+        register_job_meta('wr-job-title', $meta_key, $description);
+    }  
+}
+
+function register_job_meta(?string $post_type = NULL, ?string $meta_name, ?string $description = NULL ){
+    return register_post_meta($post_type, $meta_name, [
         'type' => 'string',
-        'description' => 'The name of the candidate',
+        'description' => $description,
         'default' => 'benauf',
         'show_in_rest' => true
       ]);
-       
 }

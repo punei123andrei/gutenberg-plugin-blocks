@@ -28,6 +28,7 @@ function wr_add_job_titles(){
             $resulted_skills = array_map(function ($item) {
                 return str_replace(' ', '-', $item);
               }, $skills);
+              
             // Tags to be configured at the end
             //   array_map(function($skill){
             //     wp_set_post_tags($post_id, 'jumir', true);
