@@ -6,16 +6,22 @@ function wr_add_custom_box() {
         add_meta_box(
             'wr-job-title',                
             'Skills',      
-            'wr_custom_box_html',  
+            'wr_skills_custom_box_html',  
             $screen                            
         );
     }
 }
 
-function wr_custom_box_html( $post ) {
+function wr_skills_custom_box_html( $post ) {
+    $candidate_name = get_post_meta($post->ID, 'candidate', true);
     $skills = json_decode(get_post_meta($post->ID, 'skills', true));
     $all_skills =  wr_post_meta();
     ?>
+    <div style="margin-bottom: 20px;">
+        <label for="candidate"><?php _e('Candidate', 'wp_riders'); ?></label>
+        <input name="candidate" id="candidate" value="<?php echo esc_attr($candidate_name); ?>">
+    </div>
+
      <select class="wr-skills full-width-select2" name="skills[]" multiple="multiple" style="width: 100%">
      <?php
      foreach($all_skills as $skill){

@@ -1,5 +1,5 @@
 {
-  "name": "udemy-plus",
+  "name": "wp-riders",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -19,7 +19,7 @@
     "test:unit": "wp-scripts test-unit-js"
   },
   "keywords": [],
-  "author": "Luis Ramirez",
+  "author": "Punei Andrei",
   "license": "ISC",
   "devDependencies": {
     "@wordpress/scripts": "^23.3.0"

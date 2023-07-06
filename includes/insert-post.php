@@ -1,6 +1,6 @@
 <?php 
 
-function wr_send_email(){
+function wr_insert_post(){
 
     $token = $_GET['token'];
     if ( ! wp_verify_nonce( $token, 'wr_token' ) ) {

@@ -1,49 +1,22 @@
 /*!**************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/blocks/wr-job-table/main.css ***!
   \**************************************************************************************************************************************************************************************/
-.container-flex {
-    max-width: 800px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .container-flex .item {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  .wr-table-sort {
     text-align: center;
+    margin: 40px auto;
   }
-  .x-auto {
-    margin: 0 auto;
+  .wr-table-sort tr:nth-child(even) {
+    background-color: #f9f9f9;
+  } 
+  .wr-table-sort tr p {
+    line-height: 1.5rem;
+    font-size: 1rem;
   }
-  .wr-select-form {
-    display: flex;
-    justify-content: space-between;
-    max-width: 800px;
+  .wr-table-sort td {
+    padding: 0 5px;
   }
-  .wr-select-form select {
-    display: block;
-    width: 70%;
-    height: 30px;
-  }
-  
-  #wr-job-application {
-    display: flex;
-    height: 300px;
-    flex-direction: column;
-    justify-content: space-evenly;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  #wr-job-application input,
-  #wr-job-application select,
-  #wr-job-application label {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    height: 30px;
-  }
-  #wr-job-application button {
-    margin-top: 20px;
+  .wr-table-sort td:last-child {
+    width: 25%; 
   }
 
 /*# sourceMappingURL=index.css.map*/

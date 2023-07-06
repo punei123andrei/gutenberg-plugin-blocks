@@ -55,6 +55,12 @@ function wr_create_job_title_post_type(){
         'default' => 'benauf',
         'show_in_rest' => true
       ]);
+
+      register_post_meta('wr-job-title', 'candidate', [
+        'type' => 'string',
+        'description' => 'The name of the candidate',
+        'default' => 'benauf',
+        'show_in_rest' => true
+      ]);
        
 }
-

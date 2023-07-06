@@ -7,17 +7,17 @@
     "description": "Database query for the job-title post",
     "textdomain": "wp-riders",
     "attributes": {
-      "backgroundColor": {
-        "type": "string",
-        "default": "#fff"
-      },
       "fontSize": {
         "type": "number",
         "default": "16px"
       },
-      "borderBottomColor": {
+      "bgEvenRow": {
         "type": "string",
-        "default": "#000"
+        "default": "#0099ff"
+      },
+      "textColor": {
+        "type": "string",
+        "default": "#fff"
       }
     },
     "editorScript": "file:./index.js",
