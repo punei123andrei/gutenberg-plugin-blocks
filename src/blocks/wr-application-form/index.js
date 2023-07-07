@@ -21,19 +21,15 @@ import {
               _embed: true,
             });
           });
-        const mergedSkills = [];
-        posts?.forEach((post) => {
-        const skills = JSON.parse(post.meta.skills[0]);
-        mergedSkills.push(...skills);
-        });
        return (
         <>
             <div {...blockProps}>
                 <form className="wr-form" id="wr-job-application">
                     <label htmlFor="jobTitle">{__('Job Title', 'wp-riders')}</label>
                     <select name="jobTitle" id="jobTitle">
-                    {mergedSkills?.map((skill) => {
-                      return <option vlaue={skill.replace(' ', '-')}>{skill}</option>;
+                    {posts?.map((post, index) => {
+                      const postTitle = post.title.rendered;
+                      return <option vlaue={postTitle}>{postTitle}</option>;
                     })}
                     </select>
                     <label htmlFor="firstName">{__('First Name', 'wp-riders')}</label>

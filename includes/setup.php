@@ -64,7 +64,7 @@ function register_job_meta(?string $post_type = NULL, ?string $meta_name, ?strin
     return register_post_meta($post_type, $meta_name, [
         'type' => 'string',
         'description' => $description,
-        'default' => 'benauf',
+        'default' => '',
         'show_in_rest' => true
       ]);
 }

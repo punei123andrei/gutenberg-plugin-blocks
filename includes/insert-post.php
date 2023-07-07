@@ -1,41 +1,65 @@
 <?php 
 
-function wr_insert_post(){
+function wr_insert_post() {
 
-    $token = $_GET['token'];
-    if ( ! wp_verify_nonce( $token, 'wr_token' ) ) {
-        echo __('Invalid security token.', 'wp-riders');
+    $token = isset($_GET['token']) ? $_GET['token'] : '';
+    if (!wp_verify_nonce($token, 'wr_token')) {
+        wp_send_json_error('Invalid security token.');
         wp_die();
     }
 
-    $form_data = $_GET['formData'];
+    $form_data = isset($_GET['formData']) ? $_GET['formData'] : '';
+    parse_str($form_data, $form_fields);
 
-     // Parse the form data into individual variables
-     parse_str($form_data, $form_fields);
+    $job_title = isset($form_fields['jobTitle']) ? sanitize_text_field($form_fields['jobTitle']) : '';
+    $first_name = isset($form_fields['firstName']) ? sanitize_text_field($form_fields['firstName']) : '';
+    $last_name = isset($form_fields['lastName']) ? sanitize_text_field($form_fields['lastName']) : '';
+    $entry_date = isset($form_fields['entryDate']) ? sanitize_text_field($form_fields['entryDate']) : '';
 
-     // Perform validation or processing on each field
-     $job_title = isset($form_fields['jobTitle']) ? $form_fields['jobTitle'] : '';
-     $first_name = isset($form_fields['firstName']) ? $form_fields['firstName'] : '';
-     $last_name = isset($form_fields['lastName']) ? $form_fields['lastName'] : '';
-     $entry_date = isset($form_fields['entryDate']) ? $form_fields['entryDate'] : '';
+    $current = date("d-m-Y", strtotime($entry_date));
 
-    $email_subject = 'Applied for position' . $job_title;
-    $email_message = 'Name: ' . $first_name;
-    $email_message .= 'Last Name: ' . $last_name;
-    $email_message .= 'Entry Date: ' . $entry_date;
+    $existing_post_args = ["post_type" => "wr-job-title", "s" => $job_title];
+    $existing_post = get_posts( $existing_post_args );
 
-    $headers[] = 'From: Your Name <yourname@example.com>';
-    $headers[] = 'Content-Type: text/html; charset=UTF-8';
+    $existing_post_id = !empty($existing_post) ? $existing_post[0]->ID : 0;
+    $post_meta = $existing_post_id ? get_post_meta($existing_post_id, 'skills', true) : '';
 
-    $email_sent = wp_mail('recipient@example.com', $email_subject, $email_message, $headers);
+    $skills_array = json_decode($post_meta);
+    $skills = implode(", ", $skills_array);
 
-    if ($email_sent) {
-        wp_send_json('Email sent successfully.');
-    } else {
-        wp_send_json('Failed to send email.');
+    $candidate = $first_name . ' ' . $last_name;
+    $new_slug = $job_title . '-' . uniqid();
+    $new_post = [
+        'post_type' => 'wr-job-title',
+        'post_title' => $job_title,
+        'post_status' => 'publish',
+        'post_name' => $new_slug
+    ];
+
+    $new_post['post_title'] = $job_title;
+
+    $post_id = wp_insert_post($new_post);
+
+    if (is_wp_error($post_id)) {
+        wp_send_json_error('Failed to insert post.');
+        wp_die();
     }
-    echo json_encode($entry_date);
 
+    add_post_meta($post_id, 'candidate', $candidate);
+    add_post_meta($post_id, 'wr_date', $entry_date);
+
+    // Ads the existing skills based on the previous post
+    if(!empty($post_meta)){
+        add_post_meta($post_id, 'skills', $post_meta);
+    }
+    $results = [
+        'data'       => 'success',
+        'title'      => $job_title,
+        'first_name' => $first_name,
+        'last_name'  => $last_name,
+        'skills'     => $skills,
+        'entry_date' => $current
+    ];
+    wp_send_json($results);
     wp_die();
-
 }

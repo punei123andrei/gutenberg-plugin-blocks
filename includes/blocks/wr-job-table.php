@@ -21,6 +21,7 @@ function wr_job_table($atts) {
                 $wr_query->the_post();
                 $wr_skills = get_post_meta(get_the_ID(), 'skills', true);
                 $wr_name = get_post_meta(get_the_ID(), 'candidate', true);
+                $wr_entry_date = get_post_meta(get_the_ID(), 'wr_date', true);
                 $name_parts = explode(" ", $wr_name);
                 if (count($name_parts) >= 2) {
                     $name = $name_parts[0];
@@ -29,10 +30,8 @@ function wr_job_table($atts) {
                     $name = $wr_name;
                     $lastname = '';
                 }
-
                 $array_skills = json_decode($wr_skills);
-                
-                $list_skills = implode(' ', $array_skills);
+                $list_skills = is_array( $array_skills ) ? implode(' ', $array_skills) : $array_skills;
                 $is_even = $counter % 2 === 0;
                 ?>
                 <tr class="rider-row" data-sort="<?php echo esc_attr($list_skills); ?>" style="<?php echo $is_even ? $style_attr : ''; ?>">
@@ -40,6 +39,7 @@ function wr_job_table($atts) {
                   <td class="first-name"><p><?php echo esc_html($name); ?></p></td>
                   <td class="last-name"><p><?php echo esc_html($lastname); ?></p></td>
                   <td class="skills"><p><?php echo esc_html($list_skills); ?></p></td>
+                  <td class="entry-date"><p><?php echo esc_html($wr_entry_date); ?></p></td>
                 </tr>
                 <?php
                 $counter++;
