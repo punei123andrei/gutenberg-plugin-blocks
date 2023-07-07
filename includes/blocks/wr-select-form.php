@@ -1,6 +1,8 @@
 <?php 
 
-function wr_select_form() {
+function wr_select_form($atts) {
+  $font_weight = esc_attr($atts['fontWeight']);
+  $style_attr = "font-weight:{$font_weight}";
   $wr_query_args = [
     'post_type' => 'wr-job-title',
     'posts_per_page' => -1
@@ -9,7 +11,7 @@ function wr_select_form() {
     ob_start();
     ?>
     <form class="wr-form wr-select-form" id="wr-sort">
-          <label for="sortTable"><?php _e('Select a skill', 'wp-riders') ?></label>
+          <label style="<?php echo $style_attr; ?>" for="sortTable"><?php _e('Select a skill', 'wp-riders') ?></label>
           <select name="sortTable" id="sortTable">
             <?php
             $all_skills = []; 

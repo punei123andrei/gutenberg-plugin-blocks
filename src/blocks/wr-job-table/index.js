@@ -39,7 +39,7 @@ registerBlockType("wp-riders/job-table", {
                 size: 26,
             },
         ];
-          const rowStyle = useBlockProps.save({
+          const rowStyle = useBlockProps({
             className: 'rider-row',
             style: {
               'font-size': fontSize,
