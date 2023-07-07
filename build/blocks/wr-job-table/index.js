@@ -389,6 +389,7 @@ __webpack_require__.r(__webpack_exports__);
       const postTitle = post.title.rendered;
       const arraySkills = JSON.parse(post.meta.skills[0]);
       const candidateName = post.meta.candidate[0];
+      const wrDate = post.meta.wr_date[0];
       const [firstName, lastName] = candidateName.split(" ");
       const skills = arraySkills.map(skill => skill.replace(' ', '-'));
       const isEven = index % 2 === 0;
@@ -402,7 +403,9 @@ __webpack_require__.r(__webpack_exports__);
         className: "last-name"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, lastName)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("td", {
         className: "skills"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, skills.join(", "))));
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, skills.join(", "))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("td", {
+        className: "entry-date"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, wrDate)));
     })))));
   }
 });

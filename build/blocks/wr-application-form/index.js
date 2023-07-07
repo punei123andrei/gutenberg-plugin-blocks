@@ -290,11 +290,6 @@ __webpack_require__.r(__webpack_exports__);
         _embed: true
       });
     });
-    const mergedSkills = [];
-    posts?.forEach(post => {
-      const skills = JSON.parse(post.meta.skills[0]);
-      mergedSkills.push(...skills);
-    });
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
       className: "wr-form",
       id: "wr-job-application"
@@ -303,10 +298,11 @@ __webpack_require__.r(__webpack_exports__);
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Job Title', 'wp-riders')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("select", {
       name: "jobTitle",
       id: "jobTitle"
-    }, mergedSkills?.map(skill => {
+    }, posts?.map((post, index) => {
+      const postTitle = post.title.rendered;
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
-        vlaue: skill.replace(' ', '-')
-      }, skill);
+        vlaue: postTitle
+      }, postTitle);
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
       htmlFor: "firstName"
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('First Name', 'wp-riders')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {

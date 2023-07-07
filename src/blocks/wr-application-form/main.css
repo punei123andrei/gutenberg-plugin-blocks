@@ -1,31 +1,6 @@
-.container-flex {
-    max-width: 800px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .container-flex .item {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-  }
-  .x-auto {
-    margin: 0 auto;
-  }
-  .wr-select-form {
-    display: flex;
-    justify-content: space-between;
-    max-width: 800px;
-  }
-  .wr-select-form select {
-    display: block;
-    width: 70%;
-    height: 30px;
-  }
-  
   #wr-job-application {
     display: flex;
-    height: 300px;
+    min-height: 400px;
     flex-direction: column;
     justify-content: space-evenly;
     max-width: 800px;
@@ -40,5 +15,10 @@
     height: 30px;
   }
   #wr-job-application button {
+    width: 200px;
+    margin: 0 auto;
     margin-top: 20px;
+    border: none;
+    padding: 7px;
+    border-radius: 15px;
   }

@@ -1,23 +1,27 @@
 <?php 
 
 function wr_application_form(){
-    $wr_query_args = [
-      'post_type' => 'wr-job-title',
-      'posts_per_page' => -1
-    ];
-    $wr_query = new WP_Query($wr_query_args);
+  $wr_query_args = [
+    'post_type' => 'wr-job-title',
+    'posts_per_page' => -1
+  ];
+
+    $wr_posts = get_posts($wr_query_args);
+    $post_titles = [];
+    foreach ($wr_posts as $post) {
+      $post_titles[] = $post->post_title;
+    }
+    $unique_titles = array_unique($post_titles);
     ob_start();
     ?>
     <form class="wr-form" id="wr-job-application">
             <label for="jobTitle"><?php _e('Job Title', 'wp-riders')?></label>
             <select name="jobTitle" id="jobTitle">
               <?php
-              if (!empty($skills)) {
-                foreach ($skills as $skill) {
-                  ?>
-                  <option value="<?php echo esc_attr($skill); ?>"><?php echo esc_html($skill); ?></option>
-                  <?php 
-              }
+              foreach ($unique_titles as $title){
+                ?>
+                  <option value="<?php echo esc_attr($title); ?>"><?php echo esc_html($title); ?></option>
+                <?php
               }
               ?>
             </select>

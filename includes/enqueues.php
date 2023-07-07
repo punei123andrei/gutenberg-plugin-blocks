@@ -12,12 +12,19 @@ function wr_job_titles_admin_scripts(){
 
 function wr_frontend_scripts(){
     wp_enqueue_script('wr-frontend-script', plugins_url('../assets/frontend.js', __FILE__), array('jquery'), '1.0', true);
+    $translations = [
+        'formSubmissionSuccess' => __('Job Application submited!', 'wp_riders'),
+        'formSubmissionError' => __('Failed to submit the form. Please try again.', 'wp_riders'),
+        'requestProcessingError' => __('An error occurred while processing your request. Please try again.', 'wp_riders')
+    ];
+        
     wp_localize_script(
         'wr-frontend-script',
         'wr_job_obj',
         [
             'ajaxurl' => admin_url('admin-ajax.php'),
-            'token' => wp_create_nonce('wr_token')
+            'token' => wp_create_nonce('wr_token'),
+            'translations' => $translations
         ]
     );
     wp_enqueue_script('wr-frontend-script');
