@@ -85,6 +85,7 @@ registerBlockType("wp-riders/job-table", {
                     const postTitle = post.title.rendered;
                     const arraySkills = JSON.parse(post.meta.skills[0]);
                     const candidateName = post.meta.candidate[0];
+                    const wrDate = post.meta.wr_date[0];
                     const [firstName, lastName] = candidateName.split(" ");
 
                     const  skills = arraySkills.map(skill => skill.replace(' ', '-'));
@@ -96,6 +97,7 @@ registerBlockType("wp-riders/job-table", {
                         <td className="first-name"><p>{firstName}</p></td>
                         <td className="last-name"><p>{lastName}</p></td>
                         <td className="skills"><p>{skills.join(", ")}</p></td>
+                        <td className="entry-date"><p>{wrDate}</p></td>
                       </tr>
                     );
                   })}

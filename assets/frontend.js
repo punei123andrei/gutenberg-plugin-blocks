@@ -3,7 +3,6 @@ const $ = jQuery;
 $(document).ready(function() {
     $('#sortTable').change(function() {
         var selectedSkill = $(this).val();
-        
         $('.tableBlock .rider-row').each(function() {
           var dataSort = $(this).data('sort');
           var skillsArray = dataSort.split(' ');
@@ -14,6 +13,14 @@ $(document).ready(function() {
             $(this).show();
           }
         });
+        var existingButton = $('.wr-reset-btn');
+        if (existingButton.length === 0) {
+          var button = $('<button>', { 
+            text: 'Reset',
+            class: 'wr-reset-btn'
+          });
+          $('#wr-sort').append(button);
+        }
       });
 
       $('#wr-job-application').on('submit', function(e) {

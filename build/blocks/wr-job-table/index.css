@@ -1,1 +1,23 @@
-.wr-table-sort{margin:40px auto;text-align:center}.wr-table-sort tr:nth-child(2n){background-color:#f9f9f9}.wr-table-sort tr p{font-size:1rem;line-height:1.5rem}.wr-table-sort td{padding:0 5px}.wr-table-sort td:last-child{width:25%}
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/blocks/wr-job-table/main.css ***!
+  \**************************************************************************************************************************************************************************************/
+  .wr-table-sort {
+    text-align: center;
+    margin: 40px auto;
+    width: 100%;
+  }
+  .wr-table-sort tr:nth-child(even) {
+    background-color: #f9f9f9;
+  } 
+  .wr-table-sort tr p {
+    line-height: 1.5rem;
+    font-size: 1rem;
+  }
+  .wr-table-sort td {
+    padding: 0 5px;
+  }
+  .wr-table-sort td:last-child {
+    width: 25%; 
+  }
+
+/*# sourceMappingURL=index.css.map*/
