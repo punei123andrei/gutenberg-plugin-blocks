@@ -337,7 +337,7 @@ __webpack_require__.r(__webpack_exports__);
       slug: 'big',
       size: 26
     }];
-    const rowStyle = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+    const rowStyle = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
       className: 'rider-row',
       style: {
         'font-size': fontSize,

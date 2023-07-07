@@ -1,6 +1,9 @@
 <?php 
 
-function wr_application_form(){
+function wr_application_form($atts){
+  $background = esc_attr($atts['bgColor']);
+  $text_color = esc_attr($atts['textColor']);
+  $style_attr = "background:{$background};color:{$text_color};";
   $wr_query_args = [
     'post_type' => 'wr-job-title',
     'posts_per_page' => -1
@@ -31,7 +34,7 @@ function wr_application_form(){
             <input type="text" name="lastName" id="lastName" />
             <label for="entryDate"><?php _e('Entry Date', 'wp-riders') ?></label>
             <input type="date" name="entryDate" id="entryDate" />
-            <button type="submit"><?php _e('Submit', 'wp-riders') ?></button>
+            <button style="<?php echo $style_attr; ?>" type="submit"><?php _e('Submit', 'wp-riders') ?></button>
         </form>
     <?php 
     $output = ob_get_contents();

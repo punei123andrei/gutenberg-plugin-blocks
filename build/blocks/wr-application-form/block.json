@@ -6,6 +6,16 @@
   "category": "text",
   "description": "An application form that will generate entries based on job titles",
   "textdomain": "wp-riders",
+  "attributes": {
+    "textColor": {
+      "type": "string",
+      "default": "#000"
+    },
+    "bgColor": {
+      "type": "string",
+      "default": "#0099ff"
+    }
+  },
   "editorScript": "file:./index.js",
   "style": "file:./index.css"
 }
