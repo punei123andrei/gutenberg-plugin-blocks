@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
-namespace WrOOP\Setup;
+namespace WrOOP;
 
 class Setup {
     private $rest_fields;
 
     public function __construct() {
-        new Activation();
-        new Enqueues();
-        new Deactivation();
+        new Setup\Activation();
+        new Setup\Enqueues();
+        new Setup\Deactivation();
         $this->rest_fields = ['skills', 'candidate', 'wr_date'];
         add_action('init', [$this, 'wr_register_custom_post_type']);
         add_action('init', [$this, 'wr_add_job_metas']);

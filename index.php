@@ -26,6 +26,6 @@ foreach($blocks as $block){
   include_once $block;
 };
 
-use WrOOP\Setup\Setup;
+use WrOOP\Setup;
 new Setup();
 
