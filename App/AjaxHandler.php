@@ -46,8 +46,6 @@ class AjaxHandler {
             'post_name' => $new_slug
         ];
     
-        $new_post['post_title'] = $job_title;
-    
         $post_id = wp_insert_post($new_post);
     
         if (is_wp_error($post_id)) {
