@@ -1,0 +1,17 @@
+.wr-table-sort {
+    text-align: center;
+    margin: 40px auto;
+    width: 100%;
+  }
+  .wr-table-sort tr:nth-child(even) {
+    background-color: #f9f9f9;
+  } 
+  .wr-table-sort tr p {
+    line-height: 1.5rem;
+  }
+  .wr-table-sort td {
+    padding: 0 5px;
+  }
+  .wr-table-sort td:last-child {
+    width: 25%; 
+  }

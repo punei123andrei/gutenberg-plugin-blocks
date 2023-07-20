@@ -1,0 +1,10 @@
+{
+    "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+    "apiVersion": 2,
+    "name": "wp-riders/job-application",
+    "title": "Job application",
+    "category": "text",
+    "description": "Adds a job application filter, entries and form",
+    "textdomain": "wp-riders",
+    "editorScript": "file:./index.js"
+  }

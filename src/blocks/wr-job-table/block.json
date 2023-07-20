@@ -1,0 +1,26 @@
+{
+    "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+    "apiVersion": 2,
+    "name": "wp-riders/job-table",
+    "title": "Job table",
+    "category": "text",
+    "description": "Database query for the job-title post",
+    "textdomain": "wp-riders",
+    "attributes": {
+      "fontSize": {
+        "type": "number",
+        "default": "16px"
+      },
+      "bgEvenRow": {
+        "type": "string",
+        "default": "#0099ff"
+      },
+      "textColor": {
+        "type": "string",
+        "default": "#fff"
+      }
+    },
+    "editorScript": "file:./index.js",
+    "style": "file:./index.css"
+  }
+  
