@@ -1,5 +1,5 @@
 <?php 
-namespace WrOOP\Setup;
+namespace WrOOP;
 
 class Activation {
 

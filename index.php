@@ -27,5 +27,8 @@ foreach($blocks as $block){
 };
 
 use WrOOP\Setup;
+use WrOOP\AjaxHandler;
+
 new Setup();
+new AjaxHandler();
 

@@ -1,6 +1,6 @@
 <?php 
 declare(strict_types=1);
-namespace WrOOP\Setup;
+namespace WrOOP;
 
 class Enqueues {
     public function __construct(){
@@ -13,12 +13,12 @@ class Enqueues {
         if ($current_screen->post_type === 'wr-job-title') {
             wp_enqueue_style('wr-oop-select2-css', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css');
             wp_enqueue_script('wr-oop-select2-js', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js', array('jquery'), '4.5.0', true);
-            wp_enqueue_script('wr-oop-admin-script', plugins_url('../../assets/admin.js', __FILE__), array('jquery'), microtime(), true);
+            wp_enqueue_script('wr-oop-admin-script', plugins_url('../assets/admin.js', __FILE__), array('jquery'), microtime(), true);
         }
       }
 
       function wr_oop_frontend_scripts(){
-        wp_enqueue_script('wr-frontend-script', plugins_url('../../assets/frontend.js', __FILE__), array('jquery'), '1.0', true);
+        wp_enqueue_script('wr-frontend-script', plugins_url('../assets/frontend.js', __FILE__), array('jquery'), '1.0', true);
         $translations = [
             'formSubmissionSuccess' => __('Job Application submited!', 'wp_riders'),
             'formSubmissionError' => __('Failed to submit the form. Please try again.', 'wp_riders'),
