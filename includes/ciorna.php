@@ -9,19 +9,17 @@ class AjaxHandler {
     }
 
     public function wr_create_post() {
-        if (!$this->verify_nonce()) {
+        $token = isset($_GET['token']) ? $_GET['token'] : '';
+        if (!wp_verify_nonce($token, 'wr_token')) {
             wp_send_json_error('Invalid security token.');
+            wp_die();
         }
-        $form_data = $this->handle_post_data();
+
+        $form_data = $this->handle_post_data($_GET['formData']);
         $entry_data = $this->get_post_data($form_data);
         $results = $this->insert_post($entry_data);
         wp_send_json($results);
         wp_die();
-    }
-
-    private function verify_nonce() {
-        $token = isset($_GET['token']) ? $_GET['token'] : '';
-        return wp_verify_nonce($token, 'wr_token');
     }
 
     private function handle_post_data(array $form_fields): array {
@@ -29,10 +27,10 @@ class AjaxHandler {
         parse_str($form_data, $field_value);
 
         $post_data = [];
-        $post_data['job_title'] = isset($field_value['jobTitle']) ? sanitize_text_field($field_value['jobTitle']) : '';
-        $post_data['first_name'] = isset($field_value['firstName']) ? sanitize_text_field($field_value['firstName']) : '';
-        $post_data['last_name'] = isset($field_value['lastName']) ? sanitize_text_field($field_value['lastName']) : '';
-        $post_data['entry_date'] = isset($field_value['entryDate']) ? sanitize_text_field($field_value['entryDate']) : '';
+        $post_data[] = isset($field_value['jobTitle']) ? sanitize_text_field($field_value['jobTitle']) : '';
+        $post_data[] = isset($field_value['firstName']) ? sanitize_text_field($field_value['firstName']) : '';
+        $post_data[] = isset($field_value['lastName']) ? sanitize_text_field($field_value['lastName']) : '';
+        $post_data[] = isset($field_value['entryDate']) ? sanitize_text_field($field_value['entryDate']) : '';
         
         return $post_data;
     }
@@ -57,6 +55,7 @@ class AjaxHandler {
         $skills = implode(", ", $skills_array);
         $candidate = $first_name . ' ' . $last_name;
         $new_slug = $job_title . '-' . uniqid();
+        $current_date = $this->current;
 
         return [
             'job_title'     => $job_title,

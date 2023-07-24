@@ -40,15 +40,15 @@ $(document).ready(function() {
             url: wr_job_obj.ajaxurl,
             data: data,
             success: function(response) {
-              console.log(response.data);
-                if (response.data === 'success') {
+               const {data, title, first_name, last_name, date, skills, name, slug, entry_date} = response;
+                if (data === 'success') {
                     var newRow =`
-                    <tr class="rider-row" data-sort="${response.skills}">
-                      <td class="post-title"><p>${response.title}</p></td>
-                      <td class="first-name"><p>${response.first_name}</p></td>
-                      <td class="last-name"><p>${response.last_name}</p></td>
-                      <td class="skills"><p>${response.skills}</p></td>
-                      <td class="skills"><p>${response.entry_date}</p></td>
+                    <tr class="rider-row" data-sort="${skills}">
+                      <td class="post-title"><p>${title}</p></td>
+                      <td class="first-name"><p>${first_name}</p></td>
+                      <td class="last-name"><p>${last_name}</p></td>
+                      <td class="skills"><p>${skills}</p></td>
+                      <td class="skills"><p>${entry_date}</p></td>
                     </tr>
                     `;
                     $('.wr-table-sort tbody').append(newRow);
